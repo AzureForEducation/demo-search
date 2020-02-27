@@ -1,0 +1,46 @@
+﻿@model demo_search.Models.SearchData
+
+@{
+    ViewData["Title"] = "Digital Content Searcher";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/content-tracker.css" />
+</head>
+
+<body>
+    <h1 class="sampleTitle">
+        Digital Content Searcher
+    </h1>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        // Display the search text box, with the search icon to the right of it.
+        <div class="searchBoxForm">
+            @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox" }) <input class="searchBoxSubmit" type="submit" value="">
+        </div>
+
+        @if (Model != null)
+        {
+            // Show the result count.
+            <p class="sampleText">
+                @Html.DisplayFor(m => m.resultList.Results.Count) Results
+            </p>
+
+            @for (var i = 0; i < Model.resultList.Results.Count; i++)
+            {
+                <div class="boxresult">
+                    <div id="content-title">
+                        @Html.DisplayFor(m => Model.resultList.Results[i].Document.Conteudo)
+                    </div>
+                    <div id="content-discipline">
+                       @Html.DisplayFor(y => Model.resultList.Results[i].Document.NomeDisciplina)
+                    </div>
+                </div>
+            }
+    }
+}
+</body>
+
+@*@Html.TextAreaFor(m => Model.resultList.Results[i].Document.Conteudo, new { @class = "box1" })
+@Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.NomeDisciplina, new { @class = "box2" })*@
