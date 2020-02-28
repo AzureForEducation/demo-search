@@ -71,9 +71,9 @@ namespace demo_search.Controllers
 
             var parameters = new SearchParameters
             {
-                // Enter Hotel property names into this list so only these values will be returned.
+                // Enter content property names into this list so only these values will be returned.
                 // If Select is empty, all values will be returned, which can be inefficient.
-                Select = new[] { "Conteudo", "NomeDisciplina" }
+                Select = new[] { "Conteudo", "NomeDisciplina", "MetadataId" }
             };
 
             // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
@@ -88,6 +88,22 @@ namespace demo_search.Controllers
 
             // Display the results.
             return View("Index", model);
+        }
+
+        public async Task<ActionResult> Details(string id)
+        {
+            InitSearch();
+
+            try
+            {
+                var _singleDocument = await _indexClient.Documents.GetAsync<Content>(id);
+                return PartialView("_DetailsModal", _singleDocument);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public IActionResult Privacy()

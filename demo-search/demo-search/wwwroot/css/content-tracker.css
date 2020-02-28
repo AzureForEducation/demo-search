@@ -21,6 +21,13 @@
     padding-left: 5px;
 }
 
+#content-linkto {
+    width: 100%;
+    border: none;
+    font-size: 8pt;
+    padding-left: 5px;
+}
+
 .sampleTitle {
     font: 32px/normal 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
     margin: 20px 0;

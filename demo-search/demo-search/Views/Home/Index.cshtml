@@ -31,16 +31,16 @@
             {
                 <div class="boxresult">
                     <div id="content-title">
-                        @Html.DisplayFor(m => Model.resultList.Results[i].Document.Conteudo)
+                        <a href="#" data-toggle="modal" class="modal-link" data-targeturl="@Url.Action("Details","Home", new { id = Model.resultList.Results[i].Document.MetadataId })">
+                            @Html.DisplayFor(m => Model.resultList.Results[i].Document.Conteudo)
+                        </a>
+
                     </div>
                     <div id="content-discipline">
-                       @Html.DisplayFor(y => Model.resultList.Results[i].Document.NomeDisciplina)
+                        @Html.DisplayFor(y => Model.resultList.Results[i].Document.NomeDisciplina)
                     </div>
                 </div>
             }
+        }
     }
-}
 </body>
-
-@*@Html.TextAreaFor(m => Model.resultList.Results[i].Document.Conteudo, new { @class = "box1" })
-@Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.NomeDisciplina, new { @class = "box2" })*@
