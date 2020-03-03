@@ -1,5 +1,4 @@
 ﻿@model demo_search.Models.Content
-
 <div class="modal-header">
     <h5 class="modal-title" id="exampleModalLongTitle">@Model.Conteudo</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -7,9 +6,20 @@
     </button>
 </div>
 <div class="modal-body">
-    ...
+    <h6>Details about this content:</h6>
+    <ul>
+        <li><strong>Department:</strong> @Model.Departamento</li>
+        <li><strong>Sanitized Discipline:</strong> @Model.DisciplinaHigienizada</li>
+        <li><strong>Discipline Name:</strong> @Model.NomeDisciplina</li>
+        <li><strong>Discipline Code:</strong> @Model.CodigoDisciplina</li>
+        <li><strong>Unit:</strong> @Model.Unidade</li>
+        <li><strong>Competency and Hability:</strong> @Model.CompetenciaHabilidade</li>
+        <li><strong>Learning Product:</strong> @Model.ProdutoAprendizagem</li>
+        <li><strong>Section:</strong> @Model.Secao</li>
+        <li><strong>Material's name:</strong> @Model.NomeDoMaterial</li>
+        <li><strong>Type:</strong> </li>
+    </ul>
+    <p style="text-align: center;">
+        <button id="contentLink" class="btn btn-success">Access this content</button>
+    </p>
 </div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-primary">Close</button>
-</div>
-
