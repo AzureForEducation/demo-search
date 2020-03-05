@@ -11,7 +11,9 @@
 <body>
     <h1 class="sampleTitle">
         Digital Content Searcher
+        <span class="badge badge-secondary" style="background-color:#6e008e; font-size: 12px;">Metadata-based</span>
     </h1>
+    
 
     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
     {
@@ -31,7 +33,7 @@
             {
                 <div class="boxresult">
                     <div id="content-title">
-                        <a href="#" data-toggle="modal" class="modal-link" data-targeturl="@Url.Action("Details","Home", new { id = Model.resultList.Results[i].Document.MetadataId })">
+                        <a href="#" id="linkModalSearch" data-toggle="modal" class="modal-link-1" data-targeturl="@Url.Action("Details","Home", new { id = Model.resultList.Results[i].Document.MetadataId })">
                             @Html.DisplayFor(m => Model.resultList.Results[i].Document.Conteudo)
                         </a>
 

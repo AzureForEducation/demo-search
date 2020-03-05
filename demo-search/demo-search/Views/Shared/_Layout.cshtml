@@ -21,9 +21,12 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Search</a>
-                            </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Search 1: Metadata-based</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="IndexVideo">Search 2: Video indexer-based</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -45,8 +48,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script>
         $(function () {
-
-            $('body').on('click', '.modal-link', function (e) {
+            $(".modal-link-1").click(function (e) {
                 e.preventDefault();
 
                 $.get($(this).data("targeturl"), function (data) {
@@ -54,14 +56,31 @@
                     $("#modalDetails").modal("show");
                 });
             });
+
+            $(".modal-link-2").click(function (e) {
+                e.preventDefault();
+
+                $.get($(this).data("targeturl"), function (data) {
+                    $("#modalContent2").html(data);
+                    $("#modalDetailsVideo").modal("show");
+                });
+            });
         });
     </script>
     @RenderSection("Scripts", required: false)
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- Modal 1 -->
+    <div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="modalDetails" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content" id="modalContent">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="modalDetailsVideo" tabindex="-1" role="dialog" aria-labelledby="modalDetailsVideo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" id="modalContent2">
             </div>
         </div>
     </div>

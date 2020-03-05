@@ -1,0 +1,22 @@
+﻿@model demo_search.Models.SearchDataVideo
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">@Model.resultVideos[0].name</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <h6>Details about this video:</h6>
+    <ul>
+        <li><strong>ID:</strong> @Model.resultVideos[0].id</li>
+        <li><strong>Description:</strong> @Model.resultVideos[0].description</li>
+        <li><strong>Sent by:</strong> @Model.resultVideos[0].userName</li>
+        <li><strong>Duration in seconds:</strong> @Model.resultVideos[0].durationInSeconds</li>
+        <li><strong>Language:</strong> @Model.resultVideos[0].sourceLanguage</li>
+        <li><strong>Created on:</strong> @Model.resultVideos[0].created</li>
+    </ul>
+    <p style="text-align: center;">
+        <button id="contentLink" class="btn btn-success" style="background-color: #6e008e; border-color: #6e008e;">Visualize this content</button>
+    </p>
+</div>

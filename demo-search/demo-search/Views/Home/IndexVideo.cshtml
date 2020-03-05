@@ -1,0 +1,55 @@
+﻿@model demo_search.Models.SearchDataVideo
+
+@{
+    ViewData["Title"] = "Digital Content Searcher";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/content-tracker.css" />
+</head>
+
+<body>
+    <h1 class="sampleTitle">
+        Digital Content Searcher
+        <span class="badge badge-secondary" style="background-color:#6e008e; font-size: 12px;">Video indexer-based</span>
+    </h1>
+
+
+    @using (Html.BeginForm("IndexVideo", "Home", FormMethod.Post))
+    {
+        // Display the search text box, with the search icon to the right of it.
+        <div class="searchBoxForm">
+            @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox" }) <input class="searchBoxSubmit" type="submit" value="">
+        </div>
+
+        @if (Model.resultVideos != null)
+        {
+            // Show the result count.
+            <p class="sampleText">
+                @Html.DisplayFor(m => m.resultVideos.Count) Results
+            </p>
+
+            @for (var i = 0; i < Model.resultVideos.Count; i++)
+            {
+                <div class="boxresult">
+                    <div id="content-title2" style="color: #007bff;">
+                        <a href="#" id="linkModalVideos" data-toggle="modal" class="modal-link-2" data-targeturl="@Url.Action("DetailsVideo","Home", new { id = Model.resultVideos[i].id })">
+                            @Html.DisplayFor(m => Model.resultVideos[i].name)
+                        </a>
+                    </div>
+                    <div id="content-discipline">
+                        <p>Where the search term appeared within the video:</p>
+                        <ul>
+                            @foreach (var item in Model.resultVideos[i].searchMatches)
+                            {
+                            <li>
+                                <strong>@item.startTime</strong> - @item.text
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        }
+    }
+</body>
